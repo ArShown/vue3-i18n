@@ -1,4 +1,4 @@
-# vue3-i18n-i
+# vue3-i18n
 
 ## Project setup
 ```
