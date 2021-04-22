@@ -1,6 +1,6 @@
 {
   "name": "@arshown/vue3-i18n",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "src/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",

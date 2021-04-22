@@ -1,4 +1,4 @@
-const sync = (store, i18n, options) => {
+function sync(store, i18n, options) {
  var moduleName = (options || {}).moduleName || "i18n";
 
  store.registerModule(moduleName, {
@@ -16,6 +16,6 @@ const sync = (store, i18n, options) => {
  i18n.addChangedListener((locale) => {
    store.commit(moduleName + "/LOCALE_CHANGED", locale);
  });
-};
+}
 
 export default sync;
