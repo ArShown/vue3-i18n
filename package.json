@@ -1,14 +1,15 @@
 {
-  "name": "vue3-i18n-i",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@arshown/vue3-i18n",
+  "version": "1.0.0",
+  "main": "src/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name vue3-i18n src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "ramda": "^0.27.1",
     "vue": "^3.0.0"
   },
   "devDependencies": {
