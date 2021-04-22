@@ -10,7 +10,7 @@ import {
   equals,
 } from "ramda";
 
-const I18n = function I18n(options) {
+function I18n(options) {
   const config = mergeDeepRight(
     {
       defaultLocale: "zh-tw",
@@ -68,7 +68,7 @@ const I18n = function I18n(options) {
       return params[key] ? replace(replaceRegExp, params[key], str) : str;
     }, clone(value))(matches);
   };
-};
+}
 
 I18n.prototype.install = function install(app) {
   app.config.globalProperties.$i18n = this;
