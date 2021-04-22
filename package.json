@@ -1,6 +1,6 @@
 {
   "name": "@arshown/vue3-i18n",
-  "version": "1.2.0",
+  "version": "1.0.0",
   "main": "dist/vue3-i18n.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -22,7 +22,7 @@
   },
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist/vue3-i18n.umd.min.js"
   ],
   "eslintConfig": {
     "root": true,
@@ -42,5 +42,16 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArShown/vue3-i18n.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArShown/vue3-i18n/issues"
+  },
+  "homepage": "https://github.com/ArShown/vue3-i18n#readme"
 }
