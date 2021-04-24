@@ -1,5 +1,5 @@
 function sync(store, i18n, options) {
- var moduleName = (options || {}).moduleName || "i18n";
+ var moduleName = (options || {}).name || "i18n";
 
  store.registerModule(moduleName, {
    namespaced: true,

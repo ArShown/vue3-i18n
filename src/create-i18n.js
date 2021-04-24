@@ -13,20 +13,20 @@ import {
 function I18n(options) {
   const config = mergeDeepRight(
     {
-      defaultLocale: "zh-tw",
-      feedbackLocale: "en",
+      initLocale: "zh-tw",
+      fallbackLocale: "en",
       messages: {},
     },
     options
   );
 
   const constants = {
-    _localeValue: config.defaultLocale,
-    get localeValue() {
-      return constants._localeValue;
+    _locale: config.initLocale,
+    get locale() {
+      return constants._locale;
     },
-    set localeValue(value) {
-      constants._localeValue = value;
+    set locale(value) {
+      constants._locale = value;
     },
     messages: config.messages,
     changeObserver: [],
@@ -35,11 +35,11 @@ function I18n(options) {
   const regExp = new RegExp(/\{([^}]*)\}/, "g");
 
   this.getLocale = function getLocale() {
-    return constants.localeValue;
+    return constants.locale;
   };
   this.setLocale = function setLocale(value) {
-    const prevValue = constants.localeValue;
-    constants.localeValue = value;
+    const prevValue = constants.locale;
+    constants.locale = value;
     forEach(
       (fn) => fn({ locale: value }, { locale: prevValue }),
       constants.changeObserver
@@ -58,9 +58,9 @@ function I18n(options) {
     constants.changeObserver = reject(equals(fn), constants.changeObserver);
   };
   this.transfer = function transfer(key, params = {}) {
-    const locales = constants.messages[constants.localeValue] || {};
-    const feedbackLocales = constants.messages[config.feedbackLocale] || {};
-    const value = locales[key] || feedbackLocales[key] || key;
+    const initMessages = constants.messages[constants.locale] || {};
+    const fallbackMessages = constants.messages[config.fallbackLocale] || {};
+    const value = initMessages[key] || fallbackMessages[key] || key;
     const matches = match(regExp, value);
     return reduce((str, match) => {
       const replaceRegExp = new RegExp(match);
