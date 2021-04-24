@@ -4,11 +4,8 @@ import {
   reduce,
   clone,
   mergeDeepRight,
-  forEach,
-  append,
-  reject,
-  equals,
 } from "ramda";
+import { ref, readonly } from 'vue';
 
 function I18n(options) {
   const config = mergeDeepRight(
@@ -19,46 +16,28 @@ function I18n(options) {
     },
     options
   );
+  const currentLocale = ref(config.initLocale);
 
   const constants = {
-    _locale: config.initLocale,
-    get locale() {
-      return constants._locale;
-    },
-    set locale(value) {
-      constants._locale = value;
-    },
     messages: config.messages,
-    changeObserver: [],
   };
 
-  const regExp = new RegExp(/\{([^}]*)\}/, "g");
-
-  this.getLocale = function getLocale() {
-    return constants.locale;
-  };
+  this.locale = readonly(currentLocale);
+ 
   this.setLocale = function setLocale(value) {
-    const prevValue = constants.locale;
-    constants.locale = value;
-    forEach(
-      (fn) => fn({ locale: value }, { locale: prevValue }),
-      constants.changeObserver
-    );
+    currentLocale.value = value;
   };
+
   this.addMessages = function addMessages(locale, msgs) {
     constants.messages[locale] = mergeDeepRight(
       constants.messages[locale] || {},
       msgs
     );
   };
-  this.addChangedListener = function addChangedListener(fn) {
-    constants.changeObserver = append(fn, constants.changeObserver);
-  };
-  this.removeChangedListener = function removeChangedListener(fn) {
-    constants.changeObserver = reject(equals(fn), constants.changeObserver);
-  };
-  this.transfer = function transfer(key, params = {}) {
-    const initMessages = constants.messages[constants.locale] || {};
+ 
+  const regExp = new RegExp(/\{([^}]*)\}/, "g");
+  this.t = function t(key, params = {}) {
+    const initMessages = constants.messages[currentLocale.value] || {};
     const fallbackMessages = constants.messages[config.fallbackLocale] || {};
     const value = initMessages[key] || fallbackMessages[key] || key;
     const matches = match(regExp, value);
