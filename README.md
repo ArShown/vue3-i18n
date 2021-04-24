@@ -1,8 +1,9 @@
 # vue3-i18n
 
+一個簡易並適用於 vue3 的語系套件
+
 ![](https://img.shields.io/npm/v/@arshown/vue3-i18n)
 
-一個簡易並適用於 vue3 的語系套件
 
 ## Install
 
@@ -79,17 +80,20 @@ export default {
 
 當前使用語系
 
+
 #### i18n.setLocale
 
 `(lang:string):void`
 
 變更當前使用語系
 
+
 #### i18n.addMessages
 
 `(lang:string, messages:Object):void`
 
 動態新增語系物件
+
 
 #### i18n.t
 

@@ -1,6 +1,6 @@
 {
   "name": "@arshown/vue3-i18n",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/vue3-i18n.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
