@@ -2,7 +2,7 @@
 
 一個簡易並適用於 vue3 的語系套件
 
-![](https://img.shields.io/npm/v/@arshown/vue3-i18n)
+[![](https://img.shields.io/npm/v/@arshown/vue3-i18n)](https://www.npmjs.com/package/@arshown/vue3-i18n)
 
 
 ## Install
